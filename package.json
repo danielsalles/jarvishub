@@ -1,12 +1,13 @@
 {
   "name": "jarvishub",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "JarvisHub helps you find similar issues",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "node index.js",
+    "collector": "node collector.js"
   },
-  "author": "",
+  "author": "Daniel Bastos <danielsalles@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
