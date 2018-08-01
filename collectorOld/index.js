@@ -1,8 +1,8 @@
 const request = require('../services/issueRequest')
-const insert = require('../elastic/insert')
 const arrayPagination = require('../helper/arrayPagination')
+const addQueueInsert = require('../queue/createJobs/insert')
 
-const insertEach = array => array.forEach((value, index) => insert(value).then(r => console.log('Added issue in Elastic Search.')))
+const insertEach = array => array.forEach((value, index) => addQueueInsert(value).then(r => console.log('Added issue in Queue.')).catch(e => console.error('ERROR QUEUE', e)))
 
 const execute = obj => request(obj)
                         .then(result => {
