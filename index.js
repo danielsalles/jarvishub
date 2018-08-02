@@ -1,7 +1,4 @@
 const restify = require('restify')
-const similar = require('./elastic/similar')
-// const insert = require('./elastic/insert')
-const bot = require('./bot/send')
 const addQueueSimilar = require('./queue/createJobs/similar')
 
 require('dotenv').config()
