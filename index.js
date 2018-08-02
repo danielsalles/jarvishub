@@ -1,7 +1,8 @@
 const restify = require('restify')
 const similar = require('./elastic/similar')
-const insert = require('./elastic/insert')
+// const insert = require('./elastic/insert')
 const bot = require('./bot/send')
+const addQueueSimilar = require('./queue/createJobs/similar')
 
 require('dotenv').config()
 
@@ -18,13 +19,15 @@ server.post('/issuehook', (req, res) => {
   const response = req.body
 
   if (response.action === 'opened') {
-    similar(response.issue)
-      .then(d => bot(d.hits.hits, response.issue))
-      .then(d => console.log('Similar successfully sent.'))
-      .then(d => insert(response.issue))
-      .then(d => console.log('Indexed successfully.'))
-      .then(d => res.send({ msg: 'OK' }))
-      .catch(e => console.error(e))
+    addQueueSimilar(response.issue)
+      .then(d => {
+        console.log('Add issue queue to search similar issue.')
+        res.send({ msg: 'OK' })
+      })
+      .catch(e => {
+        console.error('Restify error: ', e)
+        res.send(500, { msg: 'bad' })
+      })
   }
 })
 
