@@ -1,7 +1,7 @@
-const jobs = require('../index')
+const { q } = require('../instance')
 
 const insert = obj => new Promise((resolve, reject) => {
-  const job = jobs.create('insert', obj)
+  const job = q.create('insert', obj)
                         .priority('normal')
                         .attempts(5)
                         .save(err => {
