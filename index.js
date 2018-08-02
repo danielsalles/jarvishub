@@ -29,6 +29,6 @@ server.post('/issuehook', (req, res) => {
 })
 
 // UP SERVER
-server.listen(3000, () => {
+server.listen(4000, () => {
   console.log('Server up')
 })
