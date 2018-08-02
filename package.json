@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "node index.js",
-    "collector": "node collector.js"
+    "collector": "node collector.js",
+    "queue": "node queue/index.js"
   },
   "author": "Daniel Bastos <danielsalles@gmail.com>",
   "license": "ISC",
