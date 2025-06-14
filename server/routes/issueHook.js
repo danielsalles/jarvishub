@@ -14,6 +14,9 @@ const routes = server => {
           console.error('Restify error: ', e)
           res.send(500, { msg: 'bad' })
         })
+    } else {
+      // acknowledge other actions to avoid hanging the request
+      res.send({ msg: 'ignored' })
     }
   })
 }
